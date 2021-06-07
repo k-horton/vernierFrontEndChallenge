@@ -1,0 +1,17 @@
+{
+  "name": "challenge-chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./src/challenge-chart.js --bundle --minify --outdir=dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.2.1",
+    "esbuild": "^0.12.1",
+    "lit": "^2.0.0-rc.2"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+custom-elements.json
+# only generated for size check
+my-element.bundled.js
+.vscode/
+test/
+.eleventy.cjs
+.eslintignore
+.eslintrc.json
+.eslint.json
+.prettierrc.json
+LICENSE
+rollup.config.js
+web-dev-server.config.js
+web-test-runner.config.js
