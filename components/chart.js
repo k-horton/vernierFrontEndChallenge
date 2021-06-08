@@ -20,7 +20,28 @@ export class MyChallengeChart extends LitElement {
     return css`
     #chart-title {
       text-align: center;
-      font-size: 48pt;
+      font-size: 28pt;
+      min-height: 34px;
+    }
+
+    #buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .btn {
+      margin: auto;
+      align: center;
+      background-color: #66bac0;
+      color: #ffffff;
+      padding: 10px;
+    }
+
+    .btn:hover {
+      background-color: #f79b2e;
+      color: #1e1d1d;
     }`;
   }
 
@@ -37,7 +58,7 @@ export class MyChallengeChart extends LitElement {
   }
 
   async _plotPoints(dataSize) {
-    this.currentChart = dataSize;
+    this.currentChart = dataSize.toUpperCase();
     this.currentData = await dataService.getDataSet(dataSize);
     console.log(this.currentData);
     this.graphPoints = this._convertGraphPoints(this.currentData.xColumn.values,
@@ -58,12 +79,12 @@ export class MyChallengeChart extends LitElement {
   }
 
   _generateTable() {
-    let tableCode;
-    document.getElementById("table-content").innerHTML = "";
+    let tableCode = "";
 
     if (this.currentData) {
       let xColVals = this.currentData.xColumn.values;
       let yColVals = this.currentData.yColumn.values;
+      console.log(xColVals);
 
       tableCode +=
         "<table><tr><th>" + this.currentData.xColumn.name +
@@ -78,6 +99,8 @@ export class MyChallengeChart extends LitElement {
 
       tableCode += "</table>";
 
+      console.log(tableCode);
+
       document.getElementById("table-content").innerHTML = tableCode;
     }
   }
@@ -89,12 +112,15 @@ export class MyChallengeChart extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <div class="chart-container">
-        <challenge-chart .data=${this.graphPoints}></challenge-chart>
         <div id="chart-title">${this.currentChart}</div>
-        <button @click=${this._getSmall}>Small</button>
-        <button @click=${this._getMed}>Medium</button>
-        <button @click=${this._getLarge}>Large</button>
+        <challenge-chart .data=${this.graphPoints}></challenge-chart>
+        <div id="buttons">
+          <button class="btn btn-lg" @click=${this._getSmall}>Small</button>
+          <button class="btn btn-lg" @click=${this._getMed}>Medium</button>
+          <button class="btn btn-lg" @click=${this._getLarge}>Large</button>
+        </div>
       </div>
     `;
   }

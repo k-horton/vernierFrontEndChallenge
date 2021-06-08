@@ -13,8 +13,50 @@ body {
   background-color: var(--base-light);
   color: var(--base-dark);
   font-family: 'Montserrat';
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-accent);
+  font-size: 36pt;
 }
 
 p {
   font-family: 'Roboto';
+}
+
+i {
+  margin: 10px;
+}
+
+#chart {
+  margin: auto;
+  max-width: 60%;
+}
+
+#table-content table {
+  width: auto;
+  margin: 20px auto auto auto;
+  border: 1px solid var(--base-dark);
+}
+
+#table-content td {text-align: center;}
+
+#table-content tr:nth-child(even) { background-color: #f2f2f2; }
+
+#footer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--primary-accent);
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+}
+
+#footer a {
+  color: #ffffff;
 }

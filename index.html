@@ -11,17 +11,30 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
+    <i class="fas fa-bars fa-2x"></i>
     <challenge-menu>
     </challenge-menu>
 
     <h1>Vernier Front-end Dev Challenge</h1>
 
-    <lit-chart></lit-chart>
+    <div id="chart">
+      <lit-chart></lit-chart>
+    </div>
     <div id="table-content"></div>
 
+    <div id="footer">
+      developed by kimberly horton<br/>
+      <a href="https://github.com/k-horton/"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/kimboleh"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/kimberly-anne/"><i class="fab fa-linkedin"></i></a>
+    </div>
+
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="https://kit.fontawesome.com/e439122452.js" crossorigin="anonymous"></script>
     <script type="module" src="components/menu.js"></script>
     <script type="module" src="components/chart.js"></script>
     <script type="module" src="components/challengeDataService.js"></script>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   </body>
 </html>

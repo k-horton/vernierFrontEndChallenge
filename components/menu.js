@@ -11,10 +11,46 @@ const menuContent = html`
       top: 0;
       transition: .5s;
       min-width: 250px;
-      width: 20%;
+      width: 25%;
       height: 100%;
-      background-color: #a3a3a3;
-      padding: 10px;
+      background-color: #007377; /* primary-color */
+      box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    #toggle {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 15px;
+    }
+
+    .close {
+      position: absolute;
+      left: 0;
+      font-size: 24pt;
+      margin: 10px;
+      color: #ffffff;
+    }
+
+    #links {
+      padding-top: 25%;
+    }
+
+    .link {
+      padding: 15px;
+      margin: 0;
+    }
+
+    .link:hover {
+      background: #f79b2e;
+    }
+
+    .link a {
+      font-size: 24pt;
+      text-decoration: none;
+      color: #ffffff;
     }
   </style>
 `;
@@ -52,13 +88,22 @@ export class ChallengeMenu extends LitElement {
 
   render() {
     return html`
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
       <div class="menu-container">
         ${menuContent}
         ${this.menuToggle}
-        <div @click=${this._menuClick}>|||</div>
+        <span id="toggle" @click=${this._menuClick}></span>
         <div class="menu-content">
-          <div @click=${this._menuClick}>x</div>
-          test
+          <button type="button" class="close" aria-label="Close" @click=${this._menuClick}>
+          <span aria-hidden="true">&times;</span></button>
+          <div id="links">
+            <div class="link"><a href="http://www.vernier.com/">Vernier - Home</a></div>
+            <div class="link"><a href="http://www.vernier.com/ideas/">Ideas</a></div>
+            <div class="link"><a href="http://www.vernier.com/products/">Products</a></div>
+            <div class="link"><a href="http://www.vernier.com/training/">Educator Training</a></div>
+            <div class="link"><a href="http://www.vernier.com/caliper/">The Caliper</a></div>
+          </div>
         </div>
       </div>
     `;
