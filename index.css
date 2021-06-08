@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&&family=Roboto&family=Poppins&family=Oswald&display=swap');
 
+/* Hex Codes of Vernier's base and accent colors. */
 :root {
   --base-light: #ffffff;
   --base-dark: #1e1d1d;
-  --primary-accent: #007377;
-  --primary-light: #66bac0;
-  --secondary-accent: #d66805;
-  --secondary-light: #f79b2e;
+  --primary-accent: #007377;  /* dark teal */
+  --primary-light: #66bac0;  /* lighter blue */
+  --secondary-accent: #d66805;  /* dark orange */
+  --secondary-light: #f79b2e;  /* lighter orange */
 }
 
 body {
