@@ -9,7 +9,7 @@ export class MyChallengeChart extends LitElement {
     return {
       currentData: {type: String},  // chart data & metadata
       currentChart: {type: String}, // 'small', 'medium', or 'large'
-      graphPoints: {type: Array}    // array holding the graph points
+      graphPoints: {type: Array},    // array holding the graph points
     };
   }
 
@@ -64,12 +64,32 @@ export class MyChallengeChart extends LitElement {
    *  or 'large'
    */
   async _plotPoints(dataSize) {
-    this.currentChart = dataSize.toUpperCase();
+    dataService.stopStreaming(); // stops stream if one is running
+
+    this.currentChart = dataSize.toUpperCase(); // set title
     this.currentData = await dataService.getDataSet(dataSize);
     this.graphPoints = this._convertGraphPoints(this.currentData.xColumn.values,
         this.currentData.yColumn.values);
     this._generateTable();
-    this.requestUpdate();
+  }
+
+  /*
+   * Streams data from the ChallengeDataService streaming API instead of
+   * getting all the points generated at once. Streams at a rate of 5 points
+   * per second, but can be changed via the first variable of the closure function.
+   */
+  async _streamData() {
+    this.currentChart = "DISCO WORM";
+    let xVals = [];
+    let yVals = [];
+
+    let self = this;
+    dataService.startStreaming(5, function(x, y) {
+      xVals.push(x);
+      yVals.push(y);
+      self.graphPoints = self._convertGraphPoints(xVals, yVals);
+      self._generateTable();
+    });
   }
 
   /*
@@ -140,6 +160,7 @@ export class MyChallengeChart extends LitElement {
           <button class="btn btn-lg" @click=${this._getSmall}>Small</button>
           <button class="btn btn-lg" @click=${this._getMed}>Medium</button>
           <button class="btn btn-lg" @click=${this._getLarge}>Large</button>
+          <button class="btn btn-lg" @click=${this._streamData}>Stream Data</button>
         </div>
       </div>
     `;
