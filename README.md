@@ -34,4 +34,4 @@ the [LitElement starter repo](https://github.com/PolymerLabs/lit-element-starter
 * [@web/dev-server](https://www.npmjs.com/package/@web/dev-server)
 * [LitElement starter repo](https://github.com/PolymerLabs/lit-element-starter-js) & its included libraries
 * [Bootstrap](https://getbootstrap.com/) - buttons
-* [Font Awesome](https://fontawesome.com/) - hamburger menu icon
+* [Font Awesome](https://fontawesome.com/) - misc. icons
