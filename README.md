@@ -1,20 +1,20 @@
 # Front End Development Challenge
 
-A sample web application developed for Vernier
+A sample web application developed for Vernier that pulls sets of data from a provided API and displays them on a graph.
 
 ## Setup
 
-Install dependencies:
+To set up the application, first install dependencies:
 
 ```bash
 npm i
 ```
-To launch the web application using modern-web.dev's [@web/dev-server](https://www.npmjs.com/package/@web/dev-server), run the command
+To launch, run the command:
 
 ```bash
 npm run serve
 ```
-The application can be found at `http://localhost:8000`.
+The application can then be found running at `http://localhost:8000`.
 
 ## Architecture
 
@@ -28,3 +28,10 @@ of these components are LitElements.
 The root directory holds the `index.html` and `index.css` files, which make up
 the rest of the application; the rest of the files are boilerplate code, mostly from
 the [LitElement starter repo](https://github.com/PolymerLabs/lit-element-starter-js), which I used to set up the application.
+
+## Resources Used
+
+* [@web/dev-server](https://www.npmjs.com/package/@web/dev-server)
+* [LitElement starter repo](https://github.com/PolymerLabs/lit-element-starter-js) & its included libraries
+* [Bootstrap](https://getbootstrap.com/) - buttons
+* [Font Awesome](https://fontawesome.com/) - hamburger menu icon
