@@ -70,7 +70,7 @@ export class MyChallengeChart extends LitElement {
     this.currentData = await dataService.getDataSet(dataSize);
     this.graphPoints = this._convertGraphPoints(this.currentData.xColumn.values,
         this.currentData.yColumn.values);
-    this._generateTable();
+    this._generateTable(this.currentData);
   }
 
   /*
@@ -88,7 +88,7 @@ export class MyChallengeChart extends LitElement {
       xVals.push(x);
       yVals.push(y);
       self.graphPoints = self._convertGraphPoints(xVals, yVals);
-      self._generateTable();
+      self._generateTable(["x", "y"]);
     });
   }
 
@@ -119,30 +119,25 @@ export class MyChallengeChart extends LitElement {
    */
   _generateTable() {
     let tableCode = "";
+    let vals = this.graphPoints;
+    let xColName = "x"; // hard-coded for now
+    let yColName = "y";
 
-    if (this.currentData) {
-      let xColVals = this.currentData.xColumn.values;
-      let yColVals = this.currentData.yColumn.values;
+    // add the column titles
+    tableCode += 
+      "<table><tr><th>" + xColName + "</th><th>" + yColName + "</th></tr>";
 
-      // add the column titles
+    // for each point of data, add x and then y to a new row
+    for (var i = 0; i < vals.length; i++) {
       tableCode +=
-        "<table><tr><th>" + this.currentData.xColumn.name +
-        "</th><th>" + this.currentData.yColumn.name
-        + "</th></tr>";
-
-      // for each point of data, add x and then y to a new row
-      for (var i = 0; i < xColVals.length; i++) {
-        tableCode +=
-          "<tr><td>" + xColVals[i] + "</td><td>"
-          + yColVals[i] + "</td></tr>";
-      }
-
-      // close the table
-      tableCode += "</table>";
-
-      // add the full string to the document's HTML
-      document.getElementById("table-content").innerHTML = tableCode;
+        "<tr><td>" + vals[i].x + "</td><td>" + vals[i].y + "</td></tr>";
     }
+
+    // close the table
+    tableCode += "</table>";
+
+    // add the full string to the document's HTML
+    document.getElementById("table-content").innerHTML = tableCode;
   }
 
   constructor() {
